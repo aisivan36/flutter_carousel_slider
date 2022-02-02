@@ -336,4 +336,26 @@ class CarouselSliderState extends State<CarouselSlider>
   }
 }
 
-class _MultipleGestureRecognizer extends PanGestureRecognizer {}
+class _MultipleGestureRecognizer extends PanGestureRecognizer {
+
+  int _pointers = 0;
+
+  @override
+  void addPointer(PointerDownEvent event) {
+    super.addPointer(event);
+      _pointers++;
+      print("Pointers count $_pointers");
+      if (_pointers > 1){
+        resolve(GestureDisposition.rejected);
+        print("MultipleGestureDetector giving up");
+      }
+  }
+
+  @override
+  void stopTrackingPointer(int pointer) {
+    super.stopTrackingPointer(pointer);
+    _pointers--;
+    print("Pointers count $_pointers");
+  }
+
+}
