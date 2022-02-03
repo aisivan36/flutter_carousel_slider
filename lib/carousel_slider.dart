@@ -349,10 +349,10 @@ class _MultipleGestureRecognizer extends PanGestureRecognizer {
 
   
 
-  /*int _pointers = 0;
+  int _pointers = 0;
 
   @override
-  void addPointer(PointerDownEvent event) {
+  void addAllowedPointer(PointerDownEvent event) {
     super.addPointer(event);
       _pointers++;
       print("Pointers count $_pointers");
@@ -363,11 +363,11 @@ class _MultipleGestureRecognizer extends PanGestureRecognizer {
   }
 
   @override
-  void stopTrackingPointer(int pointer) {
-    super.stopTrackingPointer(pointer);
-    _pointers--;
+  void didStopTrackingLastPointer(int pointer) {
+    super.didStopTrackingLastPointer(pointer);
+    _pointers = 0;
     print("Pointers count $_pointers");
-  }*/
+  }
 
 
 
