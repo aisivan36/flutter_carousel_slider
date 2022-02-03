@@ -34,6 +34,7 @@ class CarouselSlider extends StatefulWidget {
 
   final int? itemCount;
 
+
   CarouselSlider(
       {required this.items,
       required this.options,
@@ -261,6 +262,10 @@ class CarouselSliderState extends State<CarouselSlider>
     clearTimer();
   }
 
+  void stopScroll(){
+    onPanUp();
+  }
+
   @override
   Widget build(BuildContext context) {
     return getGestureWrapper(PageView.builder(
@@ -334,11 +339,17 @@ class CarouselSliderState extends State<CarouselSlider>
       },
     ));
   }
+
+  
+  
 }
 
 class _MultipleGestureRecognizer extends PanGestureRecognizer {
 
-  int _pointers = 0;
+
+  
+
+  /*int _pointers = 0;
 
   @override
   void addPointer(PointerDownEvent event) {
@@ -356,6 +367,10 @@ class _MultipleGestureRecognizer extends PanGestureRecognizer {
     super.stopTrackingPointer(pointer);
     _pointers--;
     print("Pointers count $_pointers");
-  }
+  }*/
+
+
 
 }
+
+
