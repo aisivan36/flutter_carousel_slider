@@ -354,7 +354,7 @@ class _MultipleGestureRecognizer extends PanGestureRecognizer {
 
   @override
   void addAllowedPointer(PointerDownEvent event) {
-    super.addPointer(event);
+    super.addAllowedPointer(event);
       _pointers++;
       print("Pointers count $_pointers");
       if (_pointers > 1){
