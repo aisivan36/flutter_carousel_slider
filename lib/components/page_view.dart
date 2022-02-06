@@ -691,10 +691,10 @@ class PageViewModified extends StatefulWidget {
   final bool padEnds;
 
   @override
-  State<PageViewModified> createState() => _PageViewState();
+  State<PageViewModified> createState() => _PageViewModifiedState();
 }
 
-class _PageViewState extends State<PageViewModified> {
+class _PageViewModifiedState extends State<PageViewModified> {
   int _lastReportedPage = 0;
 
   @override
