@@ -1201,7 +1201,7 @@ class _HorizontalDragGestureRecognizerIgnoringMultitouch
 
   @override
   void addAllowedPointer(PointerDownEvent event) {
-    super.addPointer(event);
+    //super.addPointer(event);
     _pointers++;
     print("Pointers count $_pointers");
     if (_pointers > 1) {
@@ -1238,7 +1238,7 @@ class _VerticalDragGestureRecognizerIgnoringMultitouch
 
   @override
   void addAllowedPointer(PointerDownEvent event) {
-    super.addPointer(event);
+    //super.addPointer(event);
     _pointers++;
     print("Pointers count $_pointers");
     if (_pointers > 1) {
