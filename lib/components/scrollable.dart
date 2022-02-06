@@ -246,7 +246,7 @@ class ScrollableModified extends StatefulWidget {
   Axis get axis => axisDirectionToAxis(axisDirection);
 
   @override
-  ScrollableState createState() => ScrollableState();
+  ScrollableModifiedState createState() => ScrollableModifiedState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -266,7 +266,7 @@ class ScrollableModified extends StatefulWidget {
   ///
   /// Calling this method will create a dependency on the closest [Scrollable]
   /// in the [context], if there is one.
-  static ScrollableState? of(BuildContext context) {
+  static ScrollableModifiedState? of(BuildContext context) {
     final _ScrollableScope? widget =
         context.dependOnInheritedWidgetOfExactType<_ScrollableScope>();
     return widget?.scrollable;
@@ -314,7 +314,7 @@ class ScrollableModified extends StatefulWidget {
     // the `targetRenderObject` invisible.
     // Also see https://github.com/flutter/flutter/issues/65100
     RenderObject? targetRenderObject;
-    ScrollableState? scrollable = ScrollableModified.of(context);
+    ScrollableModifiedState? scrollable = ScrollableModified.of(context);
     while (scrollable != null) {
       futures.add(scrollable.position.ensureVisible(
         context.findRenderObject()!,
@@ -349,7 +349,7 @@ class _ScrollableScope extends InheritedWidget {
         assert(child != null),
         super(key: key, child: child);
 
-  final ScrollableState scrollable;
+  final ScrollableModifiedState scrollable;
   final ScrollPosition position;
 
   @override
@@ -368,7 +368,7 @@ class _ScrollableScope extends InheritedWidget {
 ///
 /// This class is not intended to be subclassed. To specialize the behavior of a
 /// [Scrollable], provide it with a [ScrollPhysics].
-class ScrollableState extends State<Scrollable>
+class ScrollableModifiedState extends State<ScrollableModified>
     with TickerProviderStateMixin, RestorationMixin
     implements ScrollContext {
   /// The manager for this [Scrollable] widget's viewport position.
@@ -449,7 +449,7 @@ class ScrollableState extends State<Scrollable>
     super.didChangeDependencies();
   }
 
-  bool _shouldUpdatePosition(Scrollable oldWidget) {
+  bool _shouldUpdatePosition(ScrollableModified oldWidget) {
     ScrollPhysics? newPhysics =
         widget.physics ?? widget.scrollBehavior?.getScrollPhysics(context);
     ScrollPhysics? oldPhysics = oldWidget.physics ??
@@ -464,7 +464,7 @@ class ScrollableState extends State<Scrollable>
   }
 
   @override
-  void didUpdateWidget(Scrollable oldWidget) {
+  void didUpdateWidget(ScrollableModified oldWidget) {
     super.didUpdateWidget(oldWidget);
 
     if (widget.controller != oldWidget.controller) {
@@ -1047,7 +1047,7 @@ class ScrollAction extends Action<ScrollIntent> {
   // metrics (pixels, viewportDimension, maxScrollExtent, minScrollExtent) are
   // null. The type and state arguments must not be null, and the widget must
   // have already been laid out so that the position fields are valid.
-  double _calculateScrollIncrement(ScrollableState state,
+  double _calculateScrollIncrement(ScrollableModifiedState state,
       {ScrollIncrementType type = ScrollIncrementType.line}) {
     assert(type != null);
     assert(state.position != null);
@@ -1075,7 +1075,7 @@ class ScrollAction extends Action<ScrollIntent> {
 
   // Find out how much of an increment to move by, taking the different
   // directions into account.
-  double _getIncrement(ScrollableState state, ScrollIntent intent) {
+  double _getIncrement(ScrollableModifiedState state, ScrollIntent intent) {
     final double increment =
         _calculateScrollIncrement(state, type: intent.type);
     switch (intent.direction) {
@@ -1124,7 +1124,7 @@ class ScrollAction extends Action<ScrollIntent> {
 
   @override
   void invoke(ScrollIntent intent) {
-    ScrollableState? state = ScrollableModified.of(primaryFocus!.context!);
+    ScrollableModifiedState? state = ScrollableModified.of(primaryFocus!.context!);
     if (state == null) {
       final ScrollController? primaryScrollController =
           PrimaryScrollController.of(primaryFocus!.context!);
