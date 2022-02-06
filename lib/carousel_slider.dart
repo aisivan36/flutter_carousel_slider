@@ -72,7 +72,7 @@ class CarouselSliderState extends State<CarouselSlider>
 
   CarouselState? carouselState;
 
-  PageController? pageController;
+  PageControllerModified? pageController;
 
   /// mode is related to why the page is being changed
   CarouselPageChangedReason mode = CarouselPageChangedReason.controller;
@@ -89,7 +89,7 @@ class CarouselSliderState extends State<CarouselSlider>
     carouselState!.itemCount = widget.itemCount;
 
     // pageController needs to be re-initialized to respond to state changes
-    pageController = PageController(
+    pageController = PageControllerModified(
       viewportFraction: options.viewportFraction,
       initialPage: carouselState!.realPage,
     );
@@ -115,7 +115,7 @@ class CarouselSliderState extends State<CarouselSlider>
         : carouselState!.initialPage;
     handleAutoPlay();
 
-    pageController = PageController(
+    pageController = PageControllerModified(
       viewportFraction: options.viewportFraction,
       initialPage: carouselState!.realPage,
     );
