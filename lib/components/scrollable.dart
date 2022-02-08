@@ -1203,10 +1203,10 @@ class _HorizontalDragGestureRecognizerIgnoringMultitouch
   void addAllowedPointer(PointerDownEvent event) {
     super.addAllowedPointer(event);
     _pointers++;
-    print("Pointers count $_pointers");
+    //print("Pointers count $_pointers");
     if (_pointers > 1) {
       resolve(GestureDisposition.rejected);
-      print("MultipleGestureDetector giving up");
+      //print("MultipleGestureDetector giving up");
     }
   }
 
@@ -1214,7 +1214,7 @@ class _HorizontalDragGestureRecognizerIgnoringMultitouch
   void didStopTrackingLastPointer(int pointer) {
     super.didStopTrackingLastPointer(pointer);
     _pointers = 0;
-    print("Pointers count $_pointers");
+    //print("Pointers count $_pointers");
   }
 }
 
@@ -1240,10 +1240,10 @@ class _VerticalDragGestureRecognizerIgnoringMultitouch
   void addAllowedPointer(PointerDownEvent event) {
     super.addAllowedPointer(event);
     _pointers++;
-    print("Pointers count $_pointers");
+    //print("Pointers count $_pointers");
     if (_pointers > 1) {
       resolve(GestureDisposition.rejected);
-      print("MultipleGestureDetector giving up");
+      //print("MultipleGestureDetector giving up");
     }
   }
 
@@ -1251,6 +1251,6 @@ class _VerticalDragGestureRecognizerIgnoringMultitouch
   void didStopTrackingLastPointer(int pointer) {
     super.didStopTrackingLastPointer(pointer);
     _pointers = 0;
-    print("Pointers count $_pointers");
+    //print("Pointers count $_pointers");
   }
 }
