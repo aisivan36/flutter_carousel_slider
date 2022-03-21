@@ -979,9 +979,6 @@ typedef ScrollIncrementCalculator = double Function(
 /// expectations.
 /// {@endtemplate}
 
-
-
-
 /// An [Intent] that represents scrolling the nearest scrollable by an amount
 /// appropriate for the [type] specified.
 ///
@@ -1124,7 +1121,8 @@ class ScrollAction extends Action<ScrollIntent> {
 
   @override
   void invoke(ScrollIntent intent) {
-    ScrollableModifiedState? state = ScrollableModified.of(primaryFocus!.context!);
+    ScrollableModifiedState? state =
+        ScrollableModified.of(primaryFocus!.context!);
     if (state == null) {
       final ScrollController? primaryScrollController =
           PrimaryScrollController.of(primaryFocus!.context!);

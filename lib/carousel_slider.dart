@@ -4,7 +4,6 @@ import 'dart:async';
 
 import 'package:carousel_slider/carousel_state.dart';
 import 'package:carousel_slider/components/page_view.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +33,6 @@ class CarouselSlider extends StatefulWidget {
   final CarouselControllerImpl _carouselController;
 
   final int? itemCount;
-
 
   CarouselSlider(
       {required this.items,
@@ -263,7 +261,7 @@ class CarouselSliderState extends State<CarouselSlider>
     clearTimer();
   }
 
-  void stopScroll(){
+  void stopScroll() {
     onPanUp();
   }
 
@@ -340,27 +338,20 @@ class CarouselSliderState extends State<CarouselSlider>
       },
     ));
   }
-
-  
-  
 }
 
 class _MultipleGestureRecognizer extends PanGestureRecognizer {
-
-
-  
-
   int _pointers = 0;
 
   @override
   void addAllowedPointer(PointerDownEvent event) {
     super.addAllowedPointer(event);
-      _pointers++;
-      //print("Pointers count $_pointers");
-      if (_pointers > 1){
-        resolve(GestureDisposition.rejected);
-        //print("MultipleGestureDetector giving up");
-      }
+    _pointers++;
+    //print("Pointers count $_pointers");
+    if (_pointers > 1) {
+      resolve(GestureDisposition.rejected);
+      //print("MultipleGestureDetector giving up");
+    }
   }
 
   @override
@@ -369,9 +360,4 @@ class _MultipleGestureRecognizer extends PanGestureRecognizer {
     _pointers = 0;
     //print("Pointers count $_pointers");
   }
-
-
-
 }
-
-
